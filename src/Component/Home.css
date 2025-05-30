@@ -16,6 +16,8 @@
     width: 20rem;
     border-radius: 50%;
     margin-right: 10rem;
+    filter: drop-shadow(10px 0 15px rgba(0, 0, 0, 0.2)) 
+          drop-shadow(-10px 0 15px rgba(0, 0, 0, 0.2));
   }
   .ProfileContainer {
     display: flex;

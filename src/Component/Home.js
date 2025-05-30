@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import "./Home.css";
+import ProfileImage from './img/image vector.png'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faXTwitter,
@@ -90,7 +91,7 @@ function Home() {
               </a>
             </div>
           </div>
-          <img className="Profile" src={Image} alt="Profile" />
+          <img className="Profile" src={ProfileImage} alt="Profile" />
         </section>
         <section className="About" id="About">
           <h1 className="AboutTitle" data-aos="fade-down">
