@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import './Menu.css';
+import "./Menu.css";
 import { IoHomeOutline } from "react-icons/io5";
 import { CiUser } from "react-icons/ci";
 import { IoDocumentTextOutline } from "react-icons/io5";
 import { CiMail } from "react-icons/ci";
+import { AiOutlineFundProjectionScreen } from "react-icons/ai";
 
 function Menu() {
   const [active, setActive] = useState("Home");
@@ -11,7 +12,8 @@ function Menu() {
   const menuItems = [
     { id: "Home", icon: <IoHomeOutline /> },
     { id: "About", icon: <CiUser /> },
-    { id: "Resume", icon: <IoDocumentTextOutline /> },
+    { id: "Skills", icon: <IoDocumentTextOutline /> },
+    { id: "Project", icon: <AiOutlineFundProjectionScreen /> },
     { id: "Contact", icon: <CiMail /> },
   ];
 
