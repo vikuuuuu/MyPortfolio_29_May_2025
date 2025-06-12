@@ -6,16 +6,17 @@ import { IoDocumentTextOutline } from "react-icons/io5";
 import { CiMail } from "react-icons/ci";
 import { AiOutlineFundProjectionScreen } from "react-icons/ai";
 
-function Menu() {
-  const [active, setActive] = useState("Home");
 
-  const menuItems = [
+ const menuItems = [
     { id: "Home", icon: <IoHomeOutline /> },
     { id: "About", icon: <CiUser /> },
     { id: "Skills", icon: <IoDocumentTextOutline /> },
     { id: "Project", icon: <AiOutlineFundProjectionScreen /> },
     { id: "Contact", icon: <CiMail /> },
   ];
+
+function Menu() {
+  const [active, setActive] = useState("Home");
 
   const handleClick = (id) => {
     const section = document.getElementById(id);
