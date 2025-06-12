@@ -28,7 +28,7 @@ function Menu() {
     const observerOptions = {
       root: null,
       rootMargin: "0px",
-      threshold: 0.6, // section is 60% in view
+      threshold: 0.6,
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -46,7 +46,6 @@ function Menu() {
       }
     });
 
-    // Cleanup
     return () => {
       menuItems.forEach((item) => {
         const section = document.getElementById(item.id);

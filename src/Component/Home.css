@@ -1,60 +1,85 @@
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
 .main {
   width: 100%;
-  padding: 0 50px;
+  padding: 0 10px;
   box-sizing: border-box;
   display: block;
   background-color: #ede4e4;
 }
 
+/* Home Section - Responsive */
 .Home {
   display: flex;
   text-align: center;
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 39rem;
+  min-height: 100vh;
+  padding: 2rem 1rem;
   flex-wrap: wrap-reverse;
+  gap: 2rem;
 }
+
 .Profile {
-  margin: 2rem;
-  height: 20rem;
-  width: 20rem;
+  height: 18rem;
+  width: 18rem;
   border-radius: 50%;
-  margin-right: 10rem;
   filter: drop-shadow(10px 0 15px rgba(0, 0, 0, 0.2))
     drop-shadow(-10px 0 15px rgba(0, 0, 0, 0.2));
+  flex-shrink: 0;
 }
+
 .ProfileContainer {
   display: flex;
   flex-direction: column;
-  /* row-gap: 10px; */
-  width: 41%;
-  margin-left: 10rem;
-  /* border: 1px solid; */
+  max-width: 100%;
+  width: 100%;
+  text-align: center;
 }
+
 .ProfileName1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin: 0 0 10px 0;
   display: flex;
-  font-size: 3rem;
-  margin: 0;
-  margin-bottom: 10px;
+  justify-content: center;
   gap: 10px;
+  flex-wrap: wrap;
 }
+
 .ProfileName2 {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  margin: 0 0 10px 0;
   display: flex;
-  font-size: 2rem;
-  margin: 0;
-  margin-bottom: 10px;
+  justify-content: center;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 .ProfileContainer h4 {
+  font-size: clamp(1rem, 3vw, 1.3rem);
+  margin: 0 0 5px 0;
   display: flex;
+  justify-content: center;
   gap: 10px;
-  margin: 0;
-  margin-left: 9px;
-  font-size: 1.3rem;
-  margin-bottom: 5px;
+  flex-wrap: wrap;
 }
+
 .Typing {
   border-right: 2px solid;
   padding-right: 5px;
@@ -64,7 +89,7 @@
   animation: blink-caret 0.7s step-end infinite;
   color: blueviolet;
   font-family: cursive;
-  font-size: 1.9rem;
+  font-size: clamp(1.2rem, 4vw, 1.9rem);
   text-decoration: underline;
 }
 
@@ -79,66 +104,62 @@
 }
 
 .ProfileContainer p {
-  text-align: justify;
-  max-width: 25rem;
-  margin: 0;
-  margin-left: 3rem;
-  margin-bottom: 15px;
+  text-align: center;
+  max-width: 100%;
+  margin: 0 auto 15px auto;
+  padding: 0 1rem;
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
 }
+
 .ProfileIcon {
   display: flex;
-  gap: 2rem;
-  width: 40%;
-  margin-left: 5px;
+  gap: 1.5rem;
+  justify-content: center;
   margin-top: 1.5rem;
-  /* border: 1px solid; */
+  flex-wrap: wrap;
 }
 
 .ProfileIcon a {
-  /* background-color: lightblue; */
   padding: 10px;
   border-radius: 10px;
-  border: 1px solid lightblue;
+  border: 1px solid #000;
+  transition: all 0.3s ease;
 }
 
 .ProfileIcon a:hover {
   background-color: lightblue;
-  transition: all 0.5s;
   border-radius: 15px;
 }
 
 .twitter,
 .linkedin,
 .whatsapp {
-  font-size: 1.7rem;
+  font-size: clamp(1.2rem, 3vw, 1.7rem);
   cursor: pointer;
   color: black;
 }
 
-/* About section */
-
+/* About Section - Responsive */
 .About {
   display: flex;
   flex-direction: column;
   text-align: center;
   width: 100%;
-  height: auto;
-  padding: 5rem 0;
-  scroll-behavior: smooth;
+  padding: 3rem 1rem;
 }
+
 .About .AboutTitle {
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 5vw, 2.5rem);
   margin-bottom: 2rem;
   position: relative;
   display: inline-block;
-  text-align: center;
 }
 
 .About .AboutTitle::after {
   content: "";
   position: absolute;
   left: 50%;
-  bottom: -8px; /* space between text and line */
+  bottom: -8px;
   transform: translateX(-50%);
   width: 80px;
   height: 4px;
@@ -150,46 +171,49 @@
   display: flex;
   width: 100%;
   justify-content: center;
-  margin: 3rem 0;
-  /* border: 1px solid; */
+  margin: 2rem 0;
 }
 
 .AboutContainer-Box {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  gap: 2rem;
 }
+
 .Aboutbox1 {
-  width: 300px;
+  flex: 1;
+  min-width: 280px;
+  max-width: 400px;
   display: flex;
-  flex: 1 1;
   justify-content: center;
 }
+
 .Aboutbox1 img {
   width: 100%;
   border-radius: 10px;
-  max-width: 400px;
+  max-width: 100%;
+  height: auto;
 }
 
 .Aboutbox2 {
-  width: 600px;
+  flex: 1;
+  min-width: 300px;
+  max-width: 600px;
   display: flex;
   flex-direction: column;
-  flex: 1 1;
   align-items: center;
 }
 
 .AboutDetails {
-  display: block;
-  text-align: center;
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
   font-weight: 500;
-  margin: auto;
-  width: 100%;
   line-height: 1.6;
   margin-bottom: 2rem;
+  text-align: center;
+  padding: 0 1rem;
 }
 
 .Resumebtn {
@@ -202,7 +226,7 @@
   font-weight: bold;
   font-size: large;
   box-shadow: 1px 1px 20px rgb(162, 138, 201);
-  transition: all 0.1s ease;
+  transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -210,8 +234,7 @@
 }
 
 .Resumebtn:hover {
-  /* box-shadow: 1px 1px 20px rgb(232, 171, 171); */
-  transform: scale(1.1); /* Zoom in slightly */
+  transform: scale(1.05);
 }
 
 .downloadbtn {
@@ -219,22 +242,24 @@
   margin-left: 5px;
 }
 
+/* Skills Section - Responsive */
 .Skills {
-  padding: 50px 20px;
+  padding: 3rem 1rem;
   text-align: center;
 }
 
 .SkillsTitle {
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 5vw, 2.5rem);
   color: #333;
-  margin-bottom: 40px;
+  margin-bottom: 2rem;
   position: relative;
 }
+
 .SkillsTitle::after {
   content: "";
   position: absolute;
   left: 50%;
-  bottom: -8px; /* space between text and line */
+  bottom: -8px;
   transform: translateX(-50%);
   width: 80px;
   height: 4px;
@@ -243,11 +268,12 @@
 }
 
 .SkillsContainer {
-  max-width: 750px;
+  max-width: 800px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 25px;
+  padding: 0 1rem;
 }
 
 .SkillItem {
@@ -260,6 +286,7 @@
   font-weight: 600;
   margin-bottom: 6px;
   color: #444;
+  font-size: clamp(0.9rem, 2vw, 1rem);
 }
 
 .SkillBar {
@@ -278,23 +305,24 @@
   transition: width 1s ease-in-out;
 }
 
+/* Education Section - Responsive */
 .Education {
-  padding: 50px 20px;
-  /* background-color: #fff; */
+  padding: 3rem 1rem;
   text-align: center;
 }
 
 .EducationTitle {
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 5vw, 2.5rem);
   color: #222;
-  margin-bottom: 40px;
+  margin-bottom: 2rem;
   position: relative;
 }
+
 .EducationTitle::after {
   content: "";
   position: absolute;
   left: 50%;
-  bottom: -8px; /* space between text and line */
+  bottom: -8px;
   transform: translateX(-50%);
   width: 80px;
   height: 4px;
@@ -309,34 +337,34 @@
 }
 
 .EducationCard {
-  /* padding: 30px 25px; */
   border-radius: 10px;
-  max-width: 1130px;
+  max-width: 100%;
   text-align: left;
+  padding: 0 1rem;
 }
 
 .Degree {
-  font-size: 1.8rem;
+  font-size: clamp(1.3rem, 4vw, 1.8rem);
   color: #5b5bfc;
   margin-bottom: 10px;
   text-align: center;
 }
 
 .University {
-  font-size: 1rem;
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
   color: #000;
   text-align: center;
   margin-bottom: 5px;
 }
 
 .Year {
-  font-size: 1rem;
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
   margin-bottom: 15px;
   text-align: center;
 }
 
 .CourseworkTitle {
-  font-size: 1.5rem;
+  font-size: clamp(1.2rem, 3.5vw, 1.5rem);
   margin-bottom: 30px;
   color: #333;
   text-align: center;
@@ -346,110 +374,132 @@
   padding-left: 0;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  justify-content: center;
 }
 
 .CourseCard {
   display: flex;
   flex-direction: column;
   margin-bottom: 16px;
-  font-size: 1rem;
+  font-size: clamp(0.9rem, 2vw, 1rem);
   color: #444;
-  background-color: lightblue;
-  height: 200px;
-  width: 360px;
+  background-color: #fff;
+  height: auto;
+  min-height: 180px;
+  width: 100%;
+  max-width: 360px;
   border-radius: 15px;
   cursor: pointer;
   transition: all 0.3s ease;
   padding: 20px;
   box-sizing: border-box;
 }
+
 .CourseCard:hover {
-  transform: scale(1.1);
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .CourseIcon {
   margin-right: 10px;
   color: #007bff;
-  font-size: 1.9rem;
+  font-size: clamp(1.5rem, 3vw, 1.9rem);
 }
 
 .CourseCard h4 {
   margin: 20px 0 10px 0;
-  font-size: 1.3rem;
-}
-.CourseCard p {
-  margin: 0;
+  font-size: clamp(1.1rem, 2.5vw, 1.3rem);
 }
 
+.CourseCard p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Project Section - Responsive */
 .Project {
   display: flex;
   flex-direction: column;
   text-align: center;
   width: 100%;
   height: auto;
-  padding: 3rem 0;
+  padding: 5rem 0;
   scroll-behavior: smooth;
 }
+
 .Project .ProjectTitle {
-  font-size: 2rem;
-  margin-bottom: 0;
-  letter-spacing: 5px;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  margin-bottom: 2rem;
+  letter-spacing: 2px;
 }
 
 .carousel-container {
   max-width: 800px;
-  margin: 0 auto;
   height: 100%;
-  margin-top: 3rem;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
 .project-slide {
-  padding: 10px;
-  text-align: center;
+  padding: 10px; /* Adjust padding as per design */
+  text-align: center; /* Center align slide content */
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 10px;
   max-width: 350px;
   height: auto;
-  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.project-slide:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .project-image {
-  max-width: 100%;
+  width: 100%;
   height: auto;
+  border-radius: 8px;
 }
 
 .project-heading-name {
-  font-size: 1.5rem;
-  margin-top: 10px;
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
+  margin-top: 15px;
+  margin-bottom: 10px;
 }
 
 .visit-website {
-  font-size: 0.9rem;
+  font-size: clamp(0.8rem, 2vw, 0.9rem);
   margin-top: 5px;
+  color: #007bff;
 }
 
 .project-details {
   margin-top: 10px;
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  line-height: 1.5;
 }
 
+/* Contact Section - Responsive */
 .contact-section {
-  padding: 60px 20px;
+  padding: 3rem 1rem;
   font-family: sans-serif;
 }
 
 .contact-container {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: auto;
   text-align: center;
 }
 
 .contact-title {
-  font-size: 36px;
+  font-size: clamp(2rem, 5vw, 2.5rem);
   font-weight: bold;
   color: #2c3e50;
   position: relative;
+  margin-bottom: 3rem;
 }
 
 .contact-title::after {
@@ -465,87 +515,264 @@
 }
 
 .contact-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 40px;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 50px 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  align-items: start;
 }
 
 .contact-info {
-  flex: 1;
-  min-width: 260px;
   background-color: #fff;
-  padding: 20px;
-  box-sizing: border-box ;
+  padding: 2rem;
   border-radius: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .info-block {
   display: flex;
   align-items: flex-start;
   margin-bottom: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.info-block:hover {
+  transform: translateX(5px);
 }
 
 .icon-circle {
-  background: #e6f0ff;
+  background: #ede4e4;
   color: #007bff;
-  padding: 12px;
   border-radius: 50%;
   font-size: 18px;
   margin-right: 15px;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .info-block h4 {
   margin: 0;
-  font-size: 16px;
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
   font-weight: 600;
+  text-align: left;
 }
 
 .info-block p {
   margin: 4px 0 0;
   color: #444;
-  font-size: 14px;
+  font-size: clamp(0.8rem, 2vw, 0.9rem);
+  word-break: break-word;
 }
 
 .contact-form {
-  flex: 1;
-  min-width: 300px;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .contact-form .form-row {
-  display: flex;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
   margin-bottom: 15px;
 }
 
 .contact-form input,
 .contact-form textarea {
   width: 100%;
-  padding: 12px;
+  padding: 15px;
   font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+.contact-form textarea {
+  height: 120px;
+  resize: vertical;
+  grid-column: 1 / -1;
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
   outline: none;
   border-color: #007bff;
+  background-color: #fff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
 }
 
 .contact-form button {
   background: #007bff;
   color: white;
   border: none;
-  padding: 12px 20px;
+  padding: 15px 30px;
   font-size: 16px;
-  margin-top: 10px;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
 }
 
 .contact-form button:hover {
   background: #0056b3;
+  transform: translateY(-2px);
+}
+
+/* Footer - Responsive */
+.footer {
+  background-color: #0056b3;
+  text-align: center;
+  font-weight: bold;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  color: #fff;
+  padding: 2rem 1rem;
+}
+
+/* Media Queries for Fine-tuning */
+
+/* Tablet Styles */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .main {
+    padding: 0 60px;
+  }
+
+  .Home {
+    padding: 3rem 2rem;
+    height: 80vh;
+  }
+
+  .Profile {
+    height: 20rem;
+    width: 20rem;
+  }
+
+  .ProfileContainer {
+    max-width: 500px;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Desktop Styles */
+@media (min-width: 1025px) {
+  .main {
+    padding: 0 50px;
+  }
+
+  .Home {
+    flex-wrap: nowrap;
+    padding: 4rem 2rem;
+  }
+  .ProfileName1 {
+    justify-content: flex-start;
+  }
+  .ProfileName2 {
+    justify-content: flex-start;
+  }
+
+  .Profile {
+    height: 22rem;
+    width: 22rem;
+    margin-right: 4rem;
+  }
+
+  .ProfileContainer {
+    width: 50%;
+    text-align: left;
+    margin-left: 2rem;
+  }
+
+  .ProfileContainer p {
+    text-align: justify;
+    max-width: 25rem;
+    margin-left: 3rem;
+  }
+
+  .ProfileIcon {
+    justify-content: flex-start;
+    margin-left: 5px;
+  }
+
+  .AboutContainer-Box {
+    justify-content: space-around;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr 1.2fr;
+    gap: 4rem;
+  }
+}
+
+/* Large Desktop Styles */
+@media (min-width: 1440px) {
+  .main {
+    padding: 0 100px;
+  }
+
+  .Home {
+    height: 39rem;
+  }
+
+  .ProfileContainer {
+    width: 41%;
+    margin-left: 6rem;
+  }
+}
+
+/* Mobile First Adjustments */
+@media (max-width: 480px) {
+  .Home {
+    min-height: 70vh;
+  }
+  .ProfileIcon {
+    gap: 1rem;
+  }
+
+  .ProfileIcon a {
+    padding: 8px;
+  }
+
+  .contact-form .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .CourseworkList {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .ProfileIcon,
+  .contact-form {
+    display: none;
+  }
+
+  * {
+    color: black !important;
+    background: white !important;
+  }
+}
+
+@media (max-width: 840px) {
+  .carousel-container {
+    max-width: 100%;
+    margin: 0 auto;
+    height: 100%;
+    margin-top: 3rem;
+  }
+  .project-slide {
+    max-width: 100%;
+    height: auto;
+  }
 }

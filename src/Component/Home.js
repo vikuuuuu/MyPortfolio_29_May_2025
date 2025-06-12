@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./Home.css";
 import ProfileImage from "./img/image vector.png";
 import ProfilePic from "./img/1.jpg";
@@ -29,6 +29,12 @@ import OnlineExam from "./img/onlineExam.png";
 import MyPort from "./img/portfolio image.png";
 import Calculator from "./img/Calculator image.png";
 
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+
+import emailjs from "@emailjs/browser";
+
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -40,7 +46,7 @@ const Carousel = () => {
     speed: 500,
     slidesToShow: 2,
     slidesToScroll: 1,
-    autoplay: true,
+    autoplay: false,
     autoplaySpeed: 3000,
     arrows: false,
     responsive: [
@@ -64,6 +70,14 @@ const Carousel = () => {
       },
     ],
   };
+
+  useEffect(() => {
+  AOS.init({
+    duration: 2000, // animation duration in ms
+    once: true,     // whether animation should happen only once - while scrolling down
+  });
+}, []);
+
 
   return (
     <div className="carousel-container" data-aos="fade-down">
@@ -202,6 +216,62 @@ function Home() {
     document.body.removeChild(link);
   };
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setIsSubmitting(true);
+
+  try {
+    // Send email to website owner
+    await emailjs.send(
+      "service_xhb4lql",
+      "template_tt7dd2k",
+      {
+        from_name: formData.name,
+        from_email: formData.email,
+        from_subject: formData.subject,
+        message: formData.message,
+      },
+      "_ejeQU96yZXmYtUdm"
+    );
+
+    // Send thank you email to sender
+    await emailjs.send(
+      "service_xhb4lql",
+      "template_thvj6b4",
+      {
+        to_email: formData.email,
+        to_name: formData.name,
+        to_subject: formData.subject,
+        original_message: formData.message,
+      },
+      "_ejeQU96yZXmYtUdm"
+    );
+
+    alert("Message sent successfully!");
+    setFormData({ name: "", email: "", subject: "", message: "" });
+  } catch (error) {
+    alert("Failed to send message. Please try again.");
+  } finally {
+    setIsSubmitting(false);
+  }
+};
+
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   return (
     <>
       <main className="main">
@@ -215,21 +285,31 @@ function Home() {
               <a
                 href="https://www.linkedin.com/in/vikash-sharma-48b27a263/"
                 target="_blank"
+                rel="noreferrer"
               >
                 {" "}
                 <FontAwesomeIcon icon={faLinkedinIn} className="twitter" />{" "}
               </a>{" "}
-              <a href="https://github.com/vikuuuuu" target="_blank">
+              <a
+                href="https://github.com/vikuuuuu"
+                target="_blank"
+                rel="noreferrer"
+              >
                 {" "}
                 <FontAwesomeIcon icon={faGithub} className="twitter" />
               </a>
-              <a href="https://x.com/vikashsrma" target="_blank">
+              <a
+                href="https://x.com/vikashsrma"
+                target="_blank"
+                rel="noreferrer"
+              >
                 {" "}
                 <FontAwesomeIcon icon={faXTwitter} className="twitter" />{" "}
               </a>
               <a
                 href="https://wa.me/919571404881?text=Hello%2C%20Vikash%20Sharma"
                 target="_blank"
+                rel="noreferrer"
               >
                 {" "}
                 <FontAwesomeIcon icon={faWhatsapp} className="twitter" />{" "}
@@ -238,7 +318,7 @@ function Home() {
           </div>
           <img className="Profile" src={ProfileImage} alt="Profile" />
         </section>
-        <section className="About" id="About">
+        <section className="About" id="About" data-aos="fade-up">
           <div className="AboutContainer-Box">
             <div className="Aboutbox1">
               <img src={ProfilePic} alt="ProfilePic" />
@@ -247,13 +327,13 @@ function Home() {
               <h1 className="AboutTitle" data-aos="fade-down">
                 About Me
               </h1>
-              <p className="AboutDetails">
+              <p className="AboutDetails" data-aos="fade-down">
                 I'm a frontend web developer and graphic designer who blends
                 code and creativity to build engaging, user-friendly websites. I
                 use tools like React.js and Svelte.js to turn ideas into smooth,
                 eye-catching digital experiences.
               </p>
-              <button className="Resumebtn" onClick={handleDownload}>
+              <button className="Resumebtn" onClick={handleDownload} data-aos="fade-down">
                 {" "}
                 Resume
                 <MdOutlineFileDownload className="downloadbtn" />
@@ -261,12 +341,12 @@ function Home() {
             </div>
           </div>
         </section>
-        <section className="Skills" id="Skills">
+        <section className="Skills" id="Skills" data-aos="fade-up">
           <h1 className="SkillsTitle" data-aos="fade-down">
             Technical Skills
           </h1>
           <div className="SkillsContainer">
-            <div className="SkillItem">
+            <div className="SkillItem" data-aos="fade-down">
               <div className="SkillLabel">
                 <span>HTML</span>
                 <span>80%</span>
@@ -276,7 +356,7 @@ function Home() {
               </div>
             </div>
 
-            <div className="SkillItem">
+            <div className="SkillItem" data-aos="fade-down">
               <div className="SkillLabel">
                 <span>CSS</span>
                 <span>80%</span>
@@ -286,7 +366,7 @@ function Home() {
               </div>
             </div>
 
-            <div className="SkillItem">
+            <div className="SkillItem" data-aos="fade-down">
               <div className="SkillLabel">
                 <span>JavaScript</span>
                 <span>40%</span>
@@ -296,7 +376,7 @@ function Home() {
               </div>
             </div>
 
-            <div className="SkillItem">
+            <div className="SkillItem" data-aos="fade-down">
               <div className="SkillLabel">
                 <span>React.js</span>
                 <span>70%</span>
@@ -306,7 +386,7 @@ function Home() {
               </div>
             </div>
 
-            <div className="SkillItem">
+            <div className="SkillItem" data-aos="fade-down">
               <div className="SkillLabel">
                 <span>Next Js</span>
                 <span>30%</span>
@@ -315,7 +395,7 @@ function Home() {
                 <div className="SkillProgress" style={{ width: "30%" }}></div>
               </div>
             </div>
-            <div className="SkillItem">
+            <div className="SkillItem" data-aos="fade-down">
               <div className="SkillLabel">
                 <span>Tailwind CSS</span>
                 <span>25%</span>
@@ -324,7 +404,7 @@ function Home() {
                 <div className="SkillProgress" style={{ width: "25%" }}></div>
               </div>
             </div>
-            <div className="SkillItem">
+            <div className="SkillItem" data-aos="fade-down">
               <div className="SkillLabel">
                 <span>Cloud Computing</span>
                 <span>45%</span>
@@ -336,7 +416,7 @@ function Home() {
           </div>
         </section>
 
-        <section className="Education" id="Education">
+        <section className="Education" id="Education" data-aos="fade-up">
           <h1 className="EducationTitle" data-aos="fade-down">
             Education
           </h1>
@@ -350,7 +430,7 @@ function Home() {
 
               <h4 className="CourseworkTitle">Relevant Coursework</h4>
               <div className="CourseworkList">
-                <div className="CourseCard">
+                <div className="CourseCard" data-aos="flip-left">
                   <div className="CourseIconBox">
                     <FaCloud className="CourseIcon" />
                   </div>
@@ -361,7 +441,7 @@ function Home() {
                   </p>
                 </div>
 
-                <div className="CourseCard">
+                <div className="CourseCard" data-aos="flip-right">
                   <div className="CourseIconBox">
                     <FaShieldAlt className="CourseIcon" />
                   </div>
@@ -372,7 +452,7 @@ function Home() {
                   </p>
                 </div>
 
-                <div className="CourseCard">
+                <div className="CourseCard" data-aos="flip-left">
                   <div className="CourseIconBox">
                     <FaServer className="CourseIcon" />
                   </div>
@@ -383,7 +463,7 @@ function Home() {
                   </p>
                 </div>
 
-                <div className="CourseCard">
+                <div className="CourseCard" data-aos="flip-right">
                   <div className="CourseIconBox">
                     <FaNetworkWired className="CourseIcon" />
                   </div>
@@ -394,7 +474,7 @@ function Home() {
                   </p>
                 </div>
 
-                <div className="CourseCard">
+                <div className="CourseCard" data-aos="flip-left">
                   <div className="CourseIconBox">
                     <FaProjectDiagram className="CourseIcon" />
                   </div>
@@ -405,7 +485,7 @@ function Home() {
                   </p>
                 </div>
 
-                <div className="CourseCard">
+                <div className="CourseCard" data-aos="flip-right">
                   <div className="CourseIconBox">
                     <FaPython className="CourseIcon" />
                   </div>
@@ -419,18 +499,18 @@ function Home() {
             </div>
           </div>
         </section>
-        <section className="Project" id="Project">
-          <h1 className="ProjectTitle" data-aos="fade-down">
-            Projects
-          </h1>
-          <Carousel />
-        </section>
-        <section className="contact-section">
+        <section className="Project" id="Project" data-aos="fade-down">
+        <h1 className="ProjectTitle" data-aos="fade-down">
+          Projects
+        </h1>
+        <Carousel />
+      </section>
+        <section className="contact-section" id="Contact" data-aos="fade-up">
           <div className="contact-container">
             <h2 className="contact-title">Contact</h2>
-            <div className="contact-grid">
+            <div className="contact-grid" >
               {/* Contact Info */}
-              <div className="contact-info">
+              <div className="contact-info" data-aos="fade-up">
                 <div className="info-block">
                   <div className="icon-circle">
                     <FaMapMarkerAlt />
@@ -447,7 +527,7 @@ function Home() {
                   </div>
                   <div>
                     <h4>Call Us</h4>
-                    <p>+1 5589 55488 55</p>
+                    <p>+91 95714 04881</p>
                   </div>
                 </div>
 
@@ -457,24 +537,55 @@ function Home() {
                   </div>
                   <div>
                     <h4>Email Us</h4>
-                    <p>info@example.com</p>
+                    <p>developer.vikash.msg@gmail.com</p>
                   </div>
                 </div>
               </div>
 
               {/* Contact Form */}
-              <form className="contact-form">
+              <form className="contact-form" onSubmit={handleSubmit} data-aos="fade-up">
                 <div className="form-row">
-                  <input type="text" placeholder="Your Name" />
-                  <input type="email" placeholder="Your Email" />
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Your Name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                  />
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Your Email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                  />
                 </div>
-                <input type="text" placeholder="Subject" />
-                <textarea rows="6" placeholder="Message"></textarea>
-                <button type="submit">Send Message</button>
+                <input
+                  type="text"
+                  name="subject"
+                  placeholder="Subject"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  required
+                />
+                <textarea
+                  name="message"
+                  rows="8"
+                  placeholder="Message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                ></textarea>
+                <button type="submit" disabled={isSubmitting}>
+                  {isSubmitting ? "Sending..." : "Send Message"}
+                </button>
               </form>
             </div>
           </div>
         </section>
+        <footer className="footer">©2025 Vikash Sharma</footer>
       </main>
     </>
   );
