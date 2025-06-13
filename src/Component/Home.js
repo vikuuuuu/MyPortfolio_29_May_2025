@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import "./Home.css";
 import ProfileImage from "./img/image vector.png";
-import ProfilePic from "./img/1.jpg";
+import ProfilePic from "./img/image1.jpeg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faXTwitter,
